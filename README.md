@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# Hướng Dẫn Tạo Dự Án React và Quản Lý Component
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. Tạo Dự Án React
 
-## Available Scripts
+### Các Bước Cài Đặt:
 
-In the project directory, you can run:
+1. **Cài đặt các extension cần thiết**:
+   - Cài đặt các extension cho trình duyệt và môi trường phát triển (như ESLint, Prettier).
 
-### `npm start`
+2. **Cài đặt Node.js và Git SCM**:
+   - Tải và cài đặt [Node.js](https://nodejs.org/) (bao gồm npm).
+   - Tải và cài đặt [Git](https://git-scm.com/).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. **Tạo dự án React (ví dụ: Calculator)**:
+   ```bash
+   npx create-react-app calculator-app
+   cd calculator-app
+   npm start
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## State và Props
 
-### `npm test`
+### **State**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **State** là dữ liệu được quản lý bên trong một component và có thể thay đổi theo thời gian. 
+  - **Lưu trữ và quản lý dữ liệu động** trong component.
+  - **Có thể thay đổi** (mutable).
+  - Khi **state thay đổi**, component sẽ **re-render**.
+  - **Được quản lý** bởi chính component.
 
-### `npm run build`
+### **Props**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Props** là dữ liệu được truyền từ component cha xuống component con.
+  - **Truyền dữ liệu và hành vi** từ component cha xuống component con.
+  - **Chỉ đọc** (read-only) trong component con.
+  - Thay đổi **props từ component cha** sẽ gây **re-render** component con.
+  - **Không thể thay đổi trực tiếp** trong component con.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## React Lifecycle
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Vòng đời của một component gồm 3 giai đoạn chính: **Mounting**, **Updating**, và **Unmounting**.
 
-### `npm run eject`
+### **Mounting**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **constructor()**: Khởi tạo state và binding methods.
+- **render()**: Hiển thị UI.
+- **componentDidMount()**: Chạy sau khi component được gắn vào DOM, thường dùng để fetch data hoặc thêm event listeners.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### **Updating**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **shouldComponentUpdate()**: Quyết định có nên re-render hay không.
+- **render()**: Cập nhật UI.
+- **componentDidUpdate()**: Chạy sau khi component cập nhật, thường dùng để thực hiện side effects.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### **Unmounting**
 
-## Learn More
+- **componentWillUnmount()**: Chạy trước khi component bị xóa khỏi DOM, dùng để cleanup (ví dụ: hủy timers, cancel network requests).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Chuyển Đổi Từ Class Component Sang Function Component với Hooks
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Các phương thức lifecycle trên là của **class component**, nhưng giờ chúng ta sử dụng **function component** với **hooks** để quản lý state.
 
-### Code Splitting
+### **Mounting**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. **useState**:
+   - Thêm state vào functional component, thay thế cho `constructor()`.
+   - Có thể khởi tạo trạng thái và truy xuất giá trị hiện tại để cập nhật hàm đó.
 
-### Analyzing the Bundle Size
+2. **useEffect**:
+   - Thay thế cho `componentDidMount()`.
+   - Chạy sau khi component được render lần đầu tiên.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### **Updating**
 
-### Making a Progressive Web App
+1. **useEffect**:
+   - Thay thế cho `componentDidUpdate()`.
+   - Chạy sau khi component được cập nhật lại.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### **Unmounting**
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. **useEffect**:
+   - Thay thế cho `componentWillUnmount()`.
+   - Chạy hàm cleanup khi component bị gỡ bỏ khỏi DOM (ví dụ: hủy timers, cancel network requests).
