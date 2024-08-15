@@ -1,5 +1,4 @@
-# Hướng Dẫn Tạo Dự Án React và Quản Lý Component
-
+# TÌM HIỂU VỀ STATE VÀ PROPS, CÁCH TẠO 1 REACTJS PROJECT
 ## 1. Tạo Dự Án React
 
 ### Các Bước Cài Đặt:
